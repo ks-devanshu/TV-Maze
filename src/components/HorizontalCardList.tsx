@@ -11,9 +11,11 @@ function HorizontalCardList( { category, shows} : Props ) {
         <h2 className="text-3xl lg:text-6xl py-2 pb-0 lg:py-5 mx-5 mb-0 text-[#723480] dark:text-[#DBD4FF] font-bold">{category.toUpperCase()}</h2>
         <div className="card card-side max-w-10/10 overflow-scroll overflow-y-hidden scrollbar-none">
             {shows.map( (each, index) => <figure key={index} className="mx-1 ml-2 my-1 shrink-0 w-20 h-30 md:w-30 md:h-40 lg:w-50 lg:h-60 cursor-pointer hover-3d">
-                <img className="rounded-xl"
-                src={each.show.image?.original || each.show.image?.medium || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSKtDsGGh7hLviohukOzAkdiYJsxwVEoPhDA&s'}
-                alt={each.show.name} />
+                <a className="rounded-xl" href={each.show.url} target="_blank">
+                    <img
+                    src={each.show.image?.original || each.show.image?.medium || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSKtDsGGh7hLviohukOzAkdiYJsxwVEoPhDA&s'}
+                    alt={each.show.name} />
+                </a>
             </figure> )}
         </div>
         </>

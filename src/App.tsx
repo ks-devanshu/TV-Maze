@@ -2,6 +2,10 @@ import { useState } from "react";
 import NavigationBar from "./components/NavigationBar";
 import ContentView from "./components/ContentView";
 
+const categories:string[] = [
+    'drama','science','fiction','thriller','action','crime','horror','romance','adventure'
+];
+
 export default function App() {
   const searchHandler = (term:string) => {
     console.log(term);
@@ -11,6 +15,6 @@ export default function App() {
 
   return <div data-theme={theme}>
     <NavigationBar onSearch={searchHandler} onThemeToggle={switchTheme} />
-    <ContentView />
+    {categories.map( category => <ContentView key={category} category={category} /> )}
   </div>
 }
