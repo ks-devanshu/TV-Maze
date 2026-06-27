@@ -1,19 +1,18 @@
-import apiClient, { type Query } from "../services/apiClient";
+import useServices from "../services/useServices";
 import HorizontalCardList from "./HorizontalCardList";
 
+// const a:string[] = [
+//     'drama','science','fiction','thriller','action','crime','horror','romance','adventure'
+// ];
 
-const query:Query = {
-    genre: 'drama',
-    pageSize: 5
-}
 
 function ContentView() {
-    const {data, error} = apiClient(query);
+    const {data, error} = useServices.get('crime');
 
     return (
         <>
         <div className="bg-[#FFFFE3] dark:bg-[#808034]">
-                <HorizontalCardList shows={data ? data : []} />
+                <HorizontalCardList category={'Drama'} shows={data || []} />
                 {/* <HorizontalCardList />
                 <HorizontalCardList />
                 <HorizontalCardList /> */}
