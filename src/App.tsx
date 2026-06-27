@@ -1,5 +1,6 @@
 import { useState } from "react";
 import NavigationBar from "./components/NavigationBar";
+import ContentView from "./components/ContentView";
 
 export default function App() {
   const searchHandler = (term:string) => {
@@ -10,5 +11,6 @@ export default function App() {
 
   return <div data-theme={theme}>
     <NavigationBar onSearch={searchHandler} onThemeToggle={switchTheme} />
+    <ContentView />
   </div>
 }
