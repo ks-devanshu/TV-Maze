@@ -9,7 +9,7 @@ function NavigationBar( {onSearch, onThemeToggle} : NavigationBarProps ) {
     const searchRef = useRef<HTMLInputElement>(null);
     return (
         <>
-            <div className="navbar bg-[#FF69B4] dark:bg-[#069494] shadow-sm">
+            <div className="navbar bg-[#FF69B4] dark:bg-[#069494] shadow-sm mb-2">
             <div className="navbar-start">
                 <div className="hidden md:inline-block dropdown">
                 <div tabIndex={0} role="button" className="btn btn-ghost btn-circle hover:bg-[#069494] dark:hover:bg-[#FF69B4]">
