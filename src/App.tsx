@@ -15,6 +15,6 @@ export default function App() {
 
   return <div data-theme={theme}>
     <NavigationBar onSearch={searchHandler} onThemeToggle={switchTheme} />
-    {categories.map( category => <ContentView key={category} category={category} /> )}
+    {/* {categories.map( category => <ContentView key={category} category={category} /> )} */}
   </div>
 }

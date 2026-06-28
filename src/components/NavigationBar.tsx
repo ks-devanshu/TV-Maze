@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { CiSearch } from "react-icons/ci";
 
 interface NavigationBarProps {
     onSearch: (term:string) => void,
@@ -10,36 +9,29 @@ function NavigationBar( {onSearch, onThemeToggle} : NavigationBarProps ) {
     const searchRef = useRef<HTMLInputElement>(null);
     return (
         <>
-        <div className="flex bg-[#DBD4FF] text-[#808034] dark:bg-[#723480] dark:text-[#FFFFE3] items-center px-2 py-3 justify-between">
-            <a className="flex items-center cursor-pointer" href="/">
-                <img className="w-10 h-10 md:w-20 md:h-20 rounded-full mr-2" src="/icon.jpg" alt="icon-home" />
-                <h1 className="font-bold text-shadow-lg shrink-0 md:text-4xl">TV-Maze</h1>
-            </a>
-        
-            <div className="flex pl-3 md:pr-4 items-center">
-                <div className="hidden xl:inline-block dropdown dropdown-hover mr-10">
-                    <div tabIndex={0} role="button" className="btn m-1 text-xl bg-transparent hover:border-transparent dark:bg-transparent text-[#808034] dark:text-[#FFFFE3]">Category ⌄</div>
-                    <ul tabIndex={-1} className="dropdown-content dark:text-black menu dark:[#808034] bg-[#FFFFE3] rounded-box z-1 w-52 p-2 shadow-sm text-[#808034] dark:text-[#FFFFE3]">
-                        <li className="dark:hover:bg-[#DBD4FF] rounded-l"><a>Category 1</a></li>
-                        <li className="dark:hover:bg-[#DBD4FF] rounded-l"><a>Category 2</a></li>
-                    </ul>
+            <div className="navbar bg-[#FF69B4] dark:bg-[#069494] shadow-sm">
+            <div className="navbar-start">
+                <div className="hidden md:inline-block dropdown">
+                <div tabIndex={0} role="button" className="btn btn-ghost btn-circle hover:bg-[#069494] dark:hover:bg-[#FF69B4]">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /> </svg>
                 </div>
-                <input ref={searchRef} className="bg-gray-100 dark:bg-[#FFFFE3] dark:text-black py-1 px-3 rounded-xl w-45 md:w-70 lg:w-100 xl:w-200 md:text-2xl text-[#723480] placeholder-[#723480] dark:placeholder-[#723480] focus-visible:outline-none" type="text" id="search-input" placeholder="Search movies..." />
-                <CiSearch className="w-6 h-6 text-[#723480] dark:text-white ml-2 md:h-8 md:w-8 cursor-pointer" onClick={() => {
-                    if (searchRef.current && searchRef.current.value)
-                        onSearch(searchRef.current.value);
-                }}/>
-
-
-                {/* <input onChange={onThemeToggle} id="theme-toggle" type="checkbox" className="hidden lg:inline-grid mx-2 toggle" />
-                <label htmlFor="theme-toggle" className="hidden text-[#808034] dark:text-inherit font-bold lg:inline-block text-xl cursor-pointer">Dark Mode</label> */}
-
-
-                <label className="swap swap-rotate ml-3 hidden lg:inline-grid">
-                {/* this hidden checkbox controls the state */}
-                <input type="checkbox" onChange={onThemeToggle}/>
-
-                {/* sun icon */}
+                <ul
+                    tabIndex={-1}
+                    className="menu menu-sm dropdown-content bg-base-100  dark:bg-[#FF69B4] rounded-box z-1 mt-3 w-52 p-2 shadow font-bold">
+                    <li><a>About</a></li>
+                </ul>
+                </div>
+            </div>
+            <div className="hidden md:inline-flex navbar-center">
+                <a className="btn btn-ghost text-4xl hover:bg-transparent hover:border-transparent hover:shadow-none px-5 text-white font-mono" href="">TV-Maze</a>
+            </div>
+            <div className="navbar-end">
+                <input ref={searchRef} type="text" placeholder="Search" className="dark:bg-white input input-bordered focus-visible:border-transparent focus-visible:outline-none w-100 md:w-24 md:w-auto dark:placeholder-gray-500 dark:text-gray-800" />
+                <button className="btn btn-ghost btn-circle hover:bg-[#069494] dark:hover:bg-[#FF69B4] mx-3" onClick={() => onSearch(searchRef.current?.value || '')}>
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /> </svg>
+                </button>
+                <label className="swap swap-rotate text-white">
+                <input type="checkbox" className="theme-controller" value="synthwave" onChange={onThemeToggle} />
                 <svg
                     className="swap-off h-10 w-10 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
@@ -47,8 +39,6 @@ function NavigationBar( {onSearch, onThemeToggle} : NavigationBarProps ) {
                     <path
                     d="M5.64,17l-.71.71a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l.71-.71A1,1,0,0,0,5.64,17ZM5,12a1,1,0,0,0-1-1H3a1,1,0,0,0,0,2H4A1,1,0,0,0,5,12Zm7-7a1,1,0,0,0,1-1V3a1,1,0,0,0-2,0V4A1,1,0,0,0,12,5ZM5.64,7.05a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29,1,1,0,0,0,0-1.41l-.71-.71A1,1,0,0,0,4.93,6.34Zm12,.29a1,1,0,0,0,.7-.29l.71-.71a1,1,0,1,0-1.41-1.41L17,5.64a1,1,0,0,0,0,1.41A1,1,0,0,0,17.66,7.34ZM21,11H20a1,1,0,0,0,0,2h1a1,1,0,0,0,0-2Zm-9,8a1,1,0,0,0-1,1v1a1,1,0,0,0,2,0V20A1,1,0,0,0,12,19ZM18.36,17A1,1,0,0,0,17,18.36l.71.71a1,1,0,0,0,1.41,0,1,1,0,0,0,0-1.41ZM12,6.5A5.5,5.5,0,1,0,17.5,12,5.51,5.51,0,0,0,12,6.5Zm0,9A3.5,3.5,0,1,1,15.5,12,3.5,3.5,0,0,1,12,15.5Z" />
                 </svg>
-
-                {/* moon icon */}
                 <svg
                     className="swap-on h-10 w-10 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
@@ -58,7 +48,7 @@ function NavigationBar( {onSearch, onThemeToggle} : NavigationBarProps ) {
                 </svg>
                 </label>
             </div>
-        </div>
+            </div>
         </>
     )
 }
