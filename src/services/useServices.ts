@@ -13,7 +13,7 @@ export interface Show {
 }
 
 class Services {
-    get = (q:string) => useQuery({
+    get = (q:string) => useQuery<Show[]>({
         queryKey: ['shows',q],
         queryFn: () => apiClient.get('/shows',{
             params: {

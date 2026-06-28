@@ -1,9 +1,10 @@
 import { useState } from "react";
 import NavigationBar from "./components/NavigationBar";
-import ContentView from "./components/ContentView";
+import useServices from "./services/useServices";
+import HorizontalCardList from "./components/HorizontalCardList";
 
 const categories:string[] = [
-    'drama','science','fiction','thriller','action','crime','horror','romance','adventure'
+    'comedy','fiction','child','thrill','tra','act','science','hor','romance','adv'
 ];
 
 export default function App() {
@@ -15,6 +16,9 @@ export default function App() {
 
   return <div data-theme={theme}>
     <NavigationBar onSearch={searchHandler} onThemeToggle={switchTheme} />
-    {categories.map( category => <ContentView key={category} category={category} /> )}
+    {categories.map( category => {
+      const {data} = useServices.get(category);
+      return <HorizontalCardList shows={data || []} />
+      } )}
   </div>
 }
