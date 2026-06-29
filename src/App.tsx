@@ -3,24 +3,26 @@ import NavigationBar from "./components/NavigationBar";
 import useServices from "./services/useServices";
 import HorizontalCardList from "./components/HorizontalCardList";
 import LoadingCard from "./components/LoadingCard";
+import SearchResultView from "./components/SearchResultView";
 
 const categories:string[] = [
-    'comedy','fiction','child','thrill','tra','act','science','hor','romance','adv'
+    'b','c','d','e','j','k','l','m','n','o'
 ];
 
 export default function App() {
-  const searchHandler = (term:string) => {
-    console.log(term);
-  }
+  const [searchedTerm, setSearchedTerm] = useState<string>('');
+  const searchHandler = (term:string) => setSearchedTerm(term);
   const [theme, setTheme] = useState('');
   const switchTheme = () => setTheme( theme ? '' : 'dark' );
 
-  return <div data-theme={theme}>
-    <NavigationBar onSearch={searchHandler} onThemeToggle={switchTheme} />
-    {categories.map( (category, index) => {
-      const {data, isLoading} = useServices.get(category);
-      
-      return ( isLoading ? <LoadingCard key={index} /> : <HorizontalCardList key={index} shows={data || []} />)
+  return (
+    <div data-theme={theme}>
+      <NavigationBar onSearch={searchHandler} onThemeToggle={switchTheme} />
+      {searchedTerm && <SearchResultView term={searchedTerm}/>}
+      {categories.map( (category, index) => {
+        const {data, isLoading} = useServices.get(category);
+        return ( isLoading ? <LoadingCard key={index} /> : <HorizontalCardList key={index} shows={data || []} />)
       } )}
-  </div>
+    </div>
+  )
 }

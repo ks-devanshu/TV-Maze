@@ -27,7 +27,12 @@ function NavigationBar( {onSearch, onThemeToggle} : NavigationBarProps ) {
             </div>
             <div className="navbar-end">
                 <input ref={searchRef} type="text" placeholder="Search" className="dark:bg-white input input-bordered focus-visible:border-transparent focus-visible:outline-none w-100 md:w-24 md:w-auto dark:placeholder-gray-500 dark:text-gray-800" />
-                <button className="btn btn-ghost btn-circle hover:bg-[#069494] dark:hover:bg-[#FF69B4] mx-3" onClick={() => onSearch(searchRef.current?.value || '')}>
+                <button className="btn btn-ghost btn-circle hover:bg-[#069494] dark:hover:bg-[#FF69B4] mx-3" onClick={() => {
+                    if (searchRef.current && searchRef.current.value) {
+                        onSearch(searchRef.current.value);
+                        searchRef.current.value = ''
+                    }
+                }}>
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /> </svg>
                 </button>
                 <label className="swap swap-rotate text-white">
