@@ -6,7 +6,7 @@ import LoadingCard from "./components/LoadingCard";
 import SearchResultView from "./components/SearchResultView";
 
 const categories:string[] = [
-    'b','c','d','e','j','k','l','m','n','o'
+    'a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'
 ];
 
 export default function App() {
