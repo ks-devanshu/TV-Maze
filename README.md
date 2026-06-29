@@ -1,10 +1,11 @@
 # TV-Maze (Explore TV shows)
+[Go-to-site](https://tv-maze-beta.vercel.app/)
 
 Responsive front-end React application to discover tv shows.
 Works on @[tvmaze](https://www.tvmaze.com/api)
 
 # Preview:
-(![Light mode](light-mode.png))
+![Light mode](light-mode.png)
 ![Dark mode](dark-mode.png)
 ![Search result](search-result.png)
 ![Loading screen](loading-screen.png)
