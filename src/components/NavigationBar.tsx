@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { NavLink } from "react-router-dom";
 
 interface NavigationBarProps {
     onSearch: (term:string) => void,
@@ -23,7 +24,7 @@ function NavigationBar( {onSearch, onThemeToggle} : NavigationBarProps ) {
                 </div>
             </div>
             <div className="hidden md:inline-flex navbar-center">
-                <a className="btn btn-ghost text-4xl hover:bg-transparent hover:border-transparent hover:shadow-none px-5 text-white font-mono" href="">TV-Maze</a>
+                <NavLink className="btn btn-ghost text-4xl hover:bg-transparent hover:border-transparent hover:shadow-none px-5 text-white font-mono" to='/'>TV-Maze</NavLink>
             </div>
             <div className="navbar-end">
                 <input ref={searchRef} type="text" placeholder="Search" className="dark:bg-white input input-bordered focus-visible:border-transparent focus-visible:outline-none w-100 md:w-24 md:w-auto dark:placeholder-gray-500 dark:text-gray-800" />
